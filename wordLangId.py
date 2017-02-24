@@ -1,3 +1,5 @@
+#Arken Ibrahim: amibrah2@illinois.edu
+
 import re, sys
 from collections import defaultdict
 from math import log 
@@ -43,7 +45,7 @@ def get_total_prob( input_str, counts):
         #if not unigram_count: print "smoothing ("+ k_1 +")"
         
         # Add one smoothing is applied here -- LA PLACE :)
-        prob = float(bigram_count + 1)/float(unigram_count + len(counts))
+        prob = float(bigram_count + 1)/float(unigram_count + len(counts)) # Bigram_count + 1 / Unigram count + V
         total_prob += log(prob, 2) # compute probability in logspace
         
     return total_prob
@@ -76,13 +78,20 @@ if __name__ == '__main__':
     
     line_number = 1
     for line in test_file.readlines():
+        
         eng_res = get_total_prob(line.decode("utf-8"), eng_bigram_counts)
+        
         fr_res = get_total_prob(line.decode("utf-8"), fr_bigram_counts)
+        
         ital_res = get_total_prob(line.decode("utf-8"), ital_bigram_counts)
 
+        
         prediction = max(eng_res, fr_res, ital_res)
+        
         if prediction == eng_res: print >> solution_file, str(line_number) + " English"
+        
         elif prediction == fr_res: print >> solution_file, str(line_number) + " French"
+        
         else: print >> solution_file, str(line_number) + " Italian"
         
         line_number+=1
