@@ -54,17 +54,17 @@ if __name__ == '__main__':
 
     # Generate english language model
     lang_english_file = open("LangId.train.English")
-    eng_tokens = list(lang_english_file.read().decode("utf-8"))
+    eng_tokens = list(lang_english_file.read().decode("utf-8")) # get letters
     eng_bigram_counts = get_letter_bigrams(eng_tokens)
     
     # Generate french language model
     lang_fr_file = open("LangId.train.French")
-    fr_tokens = list(lang_fr_file.read().decode("utf-8"))
+    fr_tokens = list(lang_fr_file.read().decode("utf-8")) # get letters
     fr_bigram_counts = get_letter_bigrams(fr_tokens)
     
     # Generate italian language model
     lang_ital_file = open("LangId.train.Italian")
-    ital_tokens = list(lang_ital_file.read().decode("utf-8"))
+    ital_tokens = list(lang_ital_file.read().decode("utf-8")) # get letters
     ital_bigram_counts = get_letter_bigrams(ital_tokens)
     
     
